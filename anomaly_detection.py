@@ -2,14 +2,14 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import IsolationForest
 
-# Load data
+# Loading the data from the csv file
 data = pd.read_csv("logs.csv")
 
-# Convert text to numeric features
+# Converting  text to numeric features
 vectorizer = CountVectorizer()
 X = vectorizer.fit_transform(data['log'])
 
-# Train model
+# Training the  model
 model = IsolationForest(contamination=0.3, random_state=42)
 model.fit(X)
 
